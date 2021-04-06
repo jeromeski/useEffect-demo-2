@@ -1,10 +1,31 @@
-import "./styles.css";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { Button } from 'reactstrap';
 
-export default function App() {
+// UseEffect Demo - 1
+function App() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count : ${count}`;
+    console.count('Effect fired');
+  });
+
+  console.count('App Component Rendered');
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+    <div className="container">
+      <div className="row">
+        <Button size="sm" color="danger" onClick={() => setCount(count - 1)}>
+          -
+        </Button>
+        <h1>{count}</h1>
+        <Button size="sm" color="success" onClick={() => setCount(count + 1)}>
+          +
+        </Button>
+      </div>
     </div>
   );
 }
+
+export default App;
